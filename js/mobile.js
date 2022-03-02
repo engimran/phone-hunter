@@ -38,10 +38,21 @@ const seeMore = (id) => {
 }
 
 const setSeeMore = (info) => {
+    console.log(info)
     document.getElementById('details-container').innerHTML = `
-    <div class="d-flex" >
-    <img class = "w-25" src="${info.image}" class="card-img-top" alt="...">
-    <h3>Brand: ${info.brand}</h3>
+    <div class="d-flex">
+    <div>
+    <img class = "w-100" src="${info.image}" class="card-img-top" alt="...">
+    </div>
+    <div>
+    <p><span class="fw-bold">Mobile Name:</span> ${info.name}</p>
+    <p> <span class="fw-bold">Brand:</span> ${info.brand}</p>
+    <p><span class="fw-bold">Release Date:</span> ${info.releaseDate}</p>
+    <p><span class="fw-bold">Others</span></p>
+    <p><span class="fw-bold">WLAN:</span> ${info.others.WLAN}</p>
+    <p><span class="fw-bold">Bluetooth:</span> ${info.others.Bluetooth}</p>
+    <p><span class="fw-bold">Sensors:</span> ${info.mainFeatures.sensors[0]}</p>
+    
     
     </div>
 
