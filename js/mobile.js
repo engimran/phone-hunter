@@ -1,23 +1,29 @@
+
 const searchMobile = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
+
+    // load data
+
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
 
     fetch(url)
         .then(res => res.json())
         .then(data => displayResult(data.data.slice(0, 15)));
+
 }
 const displayResult = data => {
-    // console.log(data)
+
     const searchResult = document.getElementById('search-result')
+    searchResult.textContent = '';
     data.forEach(data => {
 
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
             <div class="card">
-                <img class = "height= 300px w-25" src="${data.image}" class="card-img-top" alt="...">
+                <img class = " w-50" src="${data.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${data.phone_name}</h5>
                     <p class="card-text">${data.brand}</p>
@@ -30,6 +36,9 @@ const displayResult = data => {
 
     });
 }
+
+// Details 
+
 const seeMore = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
     fetch(url)
